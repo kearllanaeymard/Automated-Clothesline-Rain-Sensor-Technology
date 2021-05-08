@@ -1,0 +1,53 @@
+//IN3 TO DIGITALPIN 10
+//IN4 TO DIGITALPIN 9
+//ENB TO DIGITAL PIN 11
+
+// RAIN SENSOR DIGITAL 4
+
+int in3 = 10;
+int in4 = 9;
+int enb = 11;
+
+int rain_sensor = analogRead(A0);
+
+void clockwise(char a)
+{
+ analogWrite(enb, a);
+ digitalWrite(in3, HIGH);
+ digitalWrite(in4, LOW); 
+}
+
+void counter_clockwise(char a)
+{
+ analogWrite(enb, a);
+ digitalWrite(in3, LOW);
+ digitalWrite(in4, HIGH); 
+}
+ 
+void setup() {
+  // put your setup code here, to run once:
+  pinMode(in3, OUTPUT);
+  pinMode(in4, OUTPUT);
+  pinMode(enb, OUTPUT);
+  pinMode(rain_sensor, INPUT);
+  Serial.begin(9600);
+  
+
+}
+
+void loop() {
+  // put your main code here, to run repeatedly:
+
+  int rain_sensor = analogRead(A0);
+
+  if(rain_sensor > 600) //Dry
+  {
+    Serial.println(rain_sensor);
+    clockwise(255);
+  }
+  if(rain_sensor < 300) //Wet
+  {
+    Serial.println(rain_sensor);
+    counter_clockwise(255);
+  }
+}
