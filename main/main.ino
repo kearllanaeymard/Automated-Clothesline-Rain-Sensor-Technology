@@ -94,7 +94,7 @@ void loop() {
     fan_on();
     digitalWrite(uv_light, HIGH);
 
-    while(rain_sensor < 310)
+    while(rain_sensor < 370)
     {
       rain_sensor = analogRead(A0);
       Serial.println("WET(LOOB)");
