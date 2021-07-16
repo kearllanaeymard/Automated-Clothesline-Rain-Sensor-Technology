@@ -1,1 +1,1 @@
-# Automated-Sampayan
+# Automated-Clothesline-Rain-Sensor-Technology
